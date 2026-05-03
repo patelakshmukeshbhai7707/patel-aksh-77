@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Possession Tracker - Construction Work Status</title>
+    <meta name="description" content="Track construction possession handover with photos and approvals">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏗️</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-hammer"></i>
+                    <h1>Possession Tracker</h1>
+                </div>
+                <div class="header-info">
+                    <span id="currentRole" class="role-badge hidden"></span>
+                    <button id="switchRole" class="switch-role-btn hidden">
+                        <i class="fas fa-exchange-alt"></i> Switch Role
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Role Selection -->
+        <section id="roleSelector" class="role-selector">
+            <div class="hero">
+                <h2>Track Construction Work Status</h2>
+                <p>Customers report pending work with photos. Builders get notified and confirm completion.</p>
+            </div>
+            <div class="role-buttons">
+                <button class="role-btn customer-btn" data-role="customer">
+                    <i class="fas fa-home"></i>
+                    <div>
+                        <h3>Customer</h3>
+                        <p>Report pending work & approve completion</p>
+                    </div>
+                </button>
+                <button class="role-btn builder-btn" data-role="builder">
+                    <i class="fas fa-hard-hat"></i>
+                    <div>
+                        <h3>Builder</h3>
+                        <p>View pending tasks & get notifications</p>
+                    </div>
+                </button>
+            </div>
+        </section>
+
+        <!-- Customer Dashboard -->
+        <section id="customerDashboard" class="dashboard hidden">
+            <div class="dashboard-header">
+                <h2><i class="fas fa-tasks"></i> My Projects</h2>
+                <button id="addNewTaskBtn" class="primary-btn">
+                    <i class="fas fa-plus"></i> New Pending Work
+                </button>
+            </div>
+            <div id="customerTasks" class="tasks-grid">
+                <!-- Tasks populated by JS -->
+            </div>
+        </section>
+
+        <!-- Builder Dashboard -->
+        <section id="builderDashboard" class="dashboard hidden">
+            <div class="dashboard-header">
+                <h2><i class="fas fa-clipboard-list"></i> Pending Tasks</h2>
+                <div class="notification-badge" id="notificationCount">0</div>
+            </div>
+            <div id="builderTasks" class="tasks-grid">
+                <!-- Tasks populated by JS -->
+            </div>
+        </section>
+
+        <!-- Task Modal -->
+        <div id="taskModal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 id="modalTitle"></h3>
+                    <button class="close-btn" id="modalClose">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div id="modalBody"></div>
+                <div class="modal-footer">
+                    <button id="modalCancel" class="secondary-btn">Cancel</button>
+                    <button id="modalConfirm" class="primary-btn">Confirm</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notifications -->
+        <div id="notifications"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
